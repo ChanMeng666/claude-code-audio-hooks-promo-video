@@ -7,10 +7,14 @@
   "private": true,
   "dependencies": {
     "@remotion/cli": "4.0.421",
+    "@remotion/google-fonts": "^4.0.421",
+    "@remotion/media": "^4.0.421",
+    "@remotion/tailwind-v4": "4.0.421",
+    "@remotion/transitions": "^4.0.421",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-icons": "^5.5.0",
     "remotion": "4.0.421",
-    "@remotion/tailwind-v4": "4.0.421",
     "tailwindcss": "4.0.0"
   },
   "devDependencies": {
@@ -24,6 +28,9 @@
   "scripts": {
     "dev": "remotion studio",
     "build": "remotion bundle",
+    "render": "remotion render PromoVideo out/promo-video.mp4",
+    "render:gif": "remotion render PromoVideo out/promo-video.gif --image-format png --scale 0.5",
+    "generate-audio": "node --env-file=.env scripts/generate-audio.mjs",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc"
   },

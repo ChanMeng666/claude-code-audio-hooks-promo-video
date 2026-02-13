@@ -1,7 +1,15 @@
 node_modules
 dist
+build
 .DS_Store
-.env
 
-# Ignore the output video from Git but not videos you import into src/.
-out
+# Environment variables (API keys)
+.env
+.env.local
+
+# Local IDE/agent settings
+.claude/settings.local.json
+
+# Ignore render output except the final promo video
+out/*
+!out/promo-video.mp4
