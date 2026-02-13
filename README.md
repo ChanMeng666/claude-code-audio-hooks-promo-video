@@ -2,6 +2,10 @@
 
 A professional promotional video for [claude-code-audio-hooks](https://github.com/ChanMeng666/claude-code-audio-hooks), built entirely with code using **Remotion**, **Claude Code**, **ElevenLabs**, and **Suno**.
 
+## Video Output
+
+https://github.com/user-attachments/assets/f3c7ad69-f336-400a-bf57-c14943b35a0a
+
 ## Overview
 
 | Property | Value |
