@@ -1,5 +1,13 @@
 import React from "react";
-import { Sequence, useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
+import {
+  Sequence,
+  useCurrentFrame,
+  interpolate,
+  spring,
+  useVideoConfig,
+  Img,
+  staticFile,
+} from "remotion";
 import {
   FaWind,
   FaTint,
@@ -18,23 +26,22 @@ const FocusFlow: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Breathing animation
-  const cycleLength = 90;
-  const cycleFrame = frame % cycleLength;
-  const breathPhase = cycleFrame / cycleLength;
-  const breathWidth = 30 + Math.sin(breathPhase * Math.PI * 2) * 25;
+  // Screenshot scale-in
+  const imgScale = spring({
+    frame: frame - 10,
+    fps,
+    config: { damping: 15 },
+  });
 
-  const titleOpacity = interpolate(frame, [5, 15], [0, 1], {
+  // Screenshot glow pulse
+  const glowPulse = Math.sin(frame * 0.08) * 0.4 + 0.6;
+
+  const textOpacity = interpolate(frame, [40, 55], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
-  const textOpacity = interpolate(frame, [30, 45], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-
-  const modesOpacity = interpolate(frame, [60, 75], [0, 1], {
+  const modesOpacity = interpolate(frame, [70, 85], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -58,6 +65,7 @@ const FocusFlow: React.FC = () => {
         position: "relative",
       }}
     >
+      {/* Section label */}
       <div
         style={{
           position: "absolute",
@@ -73,105 +81,123 @@ const FocusFlow: React.FC = () => {
         Focus Flow
       </div>
 
+      {/* Main content: screenshot left + text/modes right */}
       <div
         style={{
-          opacity: titleOpacity,
           display: "flex",
-          flexDirection: "column",
           alignItems: "center",
-          gap: 24,
+          gap: 50,
         }}
       >
+        {/* Real screenshot */}
         <div
           style={{
-            width: 160,
-            height: 160,
-            borderRadius: "50%",
-            border: `3px solid ${COLORS.green}`,
+            transform: `scale(${Math.min(imgScale, 1)})`,
+            borderRadius: 12,
+            overflow: "hidden",
+            boxShadow: `0 10px 40px rgba(0,0,0,0.5), 0 0 ${30 * glowPulse}px ${COLORS.green}33`,
+          }}
+        >
+          <Img
+            src={staticFile("demo-focus-flow.png")}
+            style={{
+              width: 620,
+              height: 420,
+              objectFit: "cover",
+              borderRadius: 12,
+              border: `2px solid ${COLORS.green}33`,
+            }}
+          />
+        </div>
+
+        {/* Text + mode icons */}
+        <div
+          style={{
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: `0 0 ${breathWidth}px ${COLORS.green}66, inset 0 0 ${breathWidth * 0.5}px ${COLORS.green}22`,
+            flexDirection: "column",
+            alignItems: "flex-start",
+            gap: 24,
+            maxWidth: 420,
           }}
         >
           <div
             style={{
-              width: `${breathWidth + 30}%`,
-              height: `${breathWidth + 30}%`,
-              borderRadius: "50%",
-              backgroundColor: `${COLORS.green}20`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
               fontFamily,
-              fontSize: 16,
-              color: COLORS.green,
-              fontWeight: 600,
+              fontSize: 32,
+              fontWeight: 700,
+              color: COLORS.white,
+              opacity: textOpacity,
+              lineHeight: 1.3,
             }}
           >
-            {breathPhase < 0.33 ? "Inhale" : breathPhase < 0.7 ? "Hold" : "Exhale"}
+            Stay centered while
+            <br />
+            <span style={{ color: COLORS.green }}>Claude thinks.</span>
           </div>
-        </div>
 
-        <div
-          style={{
-            fontFamily,
-            fontSize: 28,
-            fontWeight: 600,
-            color: COLORS.white,
-            opacity: textOpacity,
-          }}
-        >
-          Stay centered while Claude thinks.
-        </div>
+          <div
+            style={{
+              fontFamily,
+              fontSize: 17,
+              color: COLORS.white,
+              opacity: textOpacity * 0.6,
+              lineHeight: 1.5,
+            }}
+          >
+            Guided breathing exercises launch automatically.
+            <br />
+            Close when Claude finishes.
+          </div>
 
-        <div style={{ display: "flex", gap: 40, opacity: modesOpacity }}>
-          {modes.map((mode, i) => {
-            const scale = spring({
-              frame: frame - 65 - i * 8,
-              fps,
-              config: { damping: 10, mass: 0.5 },
-            });
-            return (
-              <div
-                key={mode.label}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: 8,
-                  transform: `scale(${scale})`,
-                }}
-              >
+          {/* Mode icons */}
+          <div style={{ display: "flex", gap: 24, opacity: modesOpacity }}>
+            {modes.map((mode, i) => {
+              const scale = spring({
+                frame: frame - 75 - i * 8,
+                fps,
+                config: { damping: 10, mass: 0.5 },
+              });
+              return (
                 <div
+                  key={mode.label}
                   style={{
-                    width: 56,
-                    height: 56,
-                    borderRadius: 12,
-                    border: `1.5px solid ${COLORS.green}66`,
-                    backgroundColor: `${COLORS.green}10`,
                     display: "flex",
+                    flexDirection: "column",
                     alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: 24,
-                    color: COLORS.green,
+                    gap: 6,
+                    transform: `scale(${scale})`,
                   }}
                 >
-                  {mode.icon}
+                  <div
+                    style={{
+                      width: 48,
+                      height: 48,
+                      borderRadius: 10,
+                      border: `1.5px solid ${COLORS.green}66`,
+                      backgroundColor: `${COLORS.green}10`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 20,
+                      color: COLORS.green,
+                    }}
+                  >
+                    {mode.icon}
+                  </div>
+                  <span
+                    style={{
+                      fontFamily,
+                      fontSize: 12,
+                      color: COLORS.white,
+                      opacity: 0.7,
+                    }}
+                  >
+                    {mode.label}
+                  </span>
                 </div>
-                <span
-                  style={{
-                    fontFamily,
-                    fontSize: 14,
-                    color: COLORS.white,
-                    opacity: 0.7,
-                  }}
-                >
-                  {mode.label}
-                </span>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
