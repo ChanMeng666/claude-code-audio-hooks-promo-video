@@ -4,11 +4,16 @@ A professional promotional video for [claude-code-audio-hooks](https://github.co
 
 ## Video Output
 
-### version 1.0
+https://github.com/user-attachments/assets/3504d214-efac-4e01-84c0-426430b842d6
+
+<details>
+<summary>Previous versions</summary>
+
+### v1.0
+
 https://github.com/user-attachments/assets/f3c7ad69-f336-400a-bf57-c14943b35a0a
 
-### version 2.0
-https://github.com/user-attachments/assets/3504d214-efac-4e01-84c0-426430b842d6
+</details>
 
 ## Overview
 
@@ -16,36 +21,41 @@ https://github.com/user-attachments/assets/3504d214-efac-4e01-84c0-426430b842d6
 |----------|-------|
 | Resolution | 1920 x 1080 (Full HD) |
 | Frame Rate | 30 fps |
-| Duration | ~57 seconds (1700 frames) |
+| Duration | ~72 seconds (2170 frames) |
 | Format | MP4 (H.264) |
 | Font | Inter (Google Fonts) |
 | Brand Colors | `#16F800` (green), `#000000` (black) |
+| Version | v4.7.0 |
 
 ## Video Structure
 
-The video is composed of 7 sections connected with smooth transitions:
+The video is composed of 9 sections connected with smooth transitions:
 
 ```mermaid
 graph LR
     A[Intro<br/>5.0s] -->|wipe| B[Problem<br/>7.0s]
     B -->|fade| C[Solution<br/>6.7s]
     C -->|slide| D[Features<br/>16.0s]
-    D -->|fade| E[Demo<br/>10.0s]
-    E -->|wipe| F[Cross-Platform<br/>7.0s]
-    F -->|fade| G[CTA<br/>9.0s]
+    D -->|fade| E[Advanced<br/>10.0s]
+    E -->|slide| F[Demo<br/>10.0s]
+    F -->|wipe| G[Ecosystem<br/>7.0s]
+    G -->|fade| H[Cross-Platform<br/>7.0s]
+    H -->|fade| I[CTA<br/>9.0s]
 ```
 
 ### Section Timeline
 
 | # | Section | Duration | Description |
 |---|---------|----------|-------------|
-| 1 | Intro / Logo Reveal | 5.0s | Scan line sweep, logo materialization, particle burst |
+| 1 | Intro / Logo Reveal | 5.0s | Scan line sweep, logo materialization, particle burst (v4.7.0) |
 | 2 | Problem Statement | 7.0s | Terminal shows missed authorization, red vignette |
-| 3 | Solution Reveal | 6.7s | Dramatic circle reveal, floating feature badges |
-| 4 | Feature Highlights | 16.0s | 4 sub-scenes (Quick Setup, Hook Types, Audio Sets, Open Source) |
-| 5 | Demo Showcase | 10.0s | Real screen recording of the product in action |
-| 6 | Cross-Platform | 7.0s | 6 platform icons with animated counters |
-| 7 | Call to Action | 9.0s | Install commands, GitHub link, tagline |
+| 3 | Solution Reveal | 6.7s | Dramatic circle reveal, badges: 22 Hook Types, Focus Flow, Webhooks |
+| 4 | Feature Highlights | 16.0s | 4 sub-scenes (Quick Setup, 22 Hook Types, Audio Sets, Open Source) |
+| 5 | Advanced Features | 10.0s | 2 sub-scenes (Focus Flow with real screenshot, Webhooks: Slack/Discord/Teams/ntfy) |
+| 6 | Demo Showcase | 10.0s | Real screen recording of the product in action |
+| 7 | Ecosystem | 7.0s | Smart Matchers, Async Execution, Snooze feature cards |
+| 8 | Cross-Platform | 7.0s | 6 platform icons, 4 animated counters (22 hooks, 5 channels) |
+| 9 | Call to Action | 9.0s | Quick Setup curl command, GitHub link, tagline |
 
 ### Audio Layer
 
@@ -58,7 +68,7 @@ gantt
     axisFormat %s
 
     section BGM
-    Background Music (with ducking) :0, 1700
+    Background Music (with ducking) :0, 2170
 
     section SFX
     Scan Line     :15, 75
@@ -68,13 +78,17 @@ gantt
     Whoosh T3     :495, 525
     Notification  :755, 800
     Whoosh T4     :955, 985
+    Breathe SFX   :975, 1095
     Whoosh T5     :1235, 1265
-    Success Chime :1300, 1345
-    Whoosh T6     :1425, 1455
+    Whoosh T6     :1515, 1545
+    Whoosh T7     :1705, 1735
+    Success Chime :1770, 1815
+    Whoosh T8     :1895, 1925
 
     section Voiceover
     VO Reveal     :355, 475
-    VO CTA        :1550, 1700
+    VO Features   :1010, 1110
+    VO CTA        :2020, 2170
 ```
 
 ## Quick Start
@@ -112,12 +126,15 @@ claude-code-audio-hooks-promo-video/
 ├── public/                          # Static assets
 │   ├── claude-code-audio-hooks-logo.svg
 │   ├── demo-task-complete.mp4       # Screen recording
+│   ├── demo-focus-flow.png          # Focus Flow screenshot
 │   ├── bgm.mp3                      # Background music (Suno)
 │   ├── vo-reveal.mp3                # Voiceover (ElevenLabs)
+│   ├── vo-features.mp3              # Voiceover (ElevenLabs)
 │   ├── vo-cta.mp3                   # Voiceover (ElevenLabs)
 │   ├── sfx-scan.mp3                 # Sound effect (ElevenLabs)
 │   ├── sfx-whoosh.mp3               # Sound effect (ElevenLabs)
 │   ├── sfx-reveal.mp3               # Sound effect (ElevenLabs)
+│   ├── sfx-breathe.mp3              # Sound effect (ElevenLabs)
 │   ├── sfx-notification.mp3         # Sound effect (ElevenLabs)
 │   └── sfx-success.mp3              # Sound effect (ElevenLabs)
 ├── scripts/
@@ -126,7 +143,7 @@ claude-code-audio-hooks-promo-video/
 │   ├── Root.tsx                      # Remotion entry point
 │   ├── PromoVideo.tsx                # Main orchestrator (TransitionSeries + Audio)
 │   ├── constants.ts                  # Colors, durations, dimensions
-│   ├── sections/                     # 7 video sections
+│   ├── sections/                     # 9 video sections
 │   │   ├── IntroLogoReveal.tsx
 │   │   ├── ProblemStatement.tsx
 │   │   ├── SolutionReveal.tsx
@@ -136,7 +153,9 @@ claude-code-audio-hooks-promo-video/
 │   │   │   ├── HookTypes.tsx
 │   │   │   ├── AudioSets.tsx
 │   │   │   └── OpenSource.tsx
+│   │   ├── AdvancedFeatures.tsx      # Focus Flow + Webhooks
 │   │   ├── DemoShowcase.tsx
+│   │   ├── Ecosystem.tsx             # Smart Matchers + Async + Snooze
 │   │   ├── CrossPlatform.tsx
 │   │   └── CallToAction.tsx
 │   └── components/                   # Reusable visual components
@@ -164,21 +183,26 @@ graph TD
     PV --> VL[Visual Layer<br/>TransitionSeries]
 
     AL --> BGM[BackgroundMusic<br/>Volume ducking]
-    AL --> SFX[SFX Sequences<br/>scan, whoosh, reveal,<br/>notification, success]
-    AL --> VO[Voiceover Sequences<br/>vo-reveal, vo-cta]
+    AL --> SFX[SFX Sequences<br/>scan, whoosh, reveal,<br/>breathe, notification, success]
+    AL --> VO[Voiceover Sequences<br/>vo-reveal, vo-features, vo-cta]
 
     VL --> S1[IntroLogoReveal]
     VL --> S2[ProblemStatement]
     VL --> S3[SolutionReveal]
     VL --> S4[FeatureHighlights]
-    VL --> S5[DemoShowcase]
-    VL --> S6[CrossPlatform]
-    VL --> S7[CallToAction]
+    VL --> S5[AdvancedFeatures]
+    VL --> S6[DemoShowcase]
+    VL --> S7[Ecosystem]
+    VL --> S8[CrossPlatform]
+    VL --> S9[CallToAction]
 
     S4 --> F1[QuickSetup]
     S4 --> F2[HookTypes]
     S4 --> F3[AudioSets]
     S4 --> F4[OpenSource]
+
+    S5 --> AF1[FocusFlow]
+    S5 --> AF2[Webhooks]
 ```
 
 ### Key Patterns
@@ -209,11 +233,13 @@ The script generates:
 
 | File | Type | API Endpoint | Description |
 |------|------|-------------|-------------|
-| `vo-reveal.mp3` | Voiceover | `/text-to-speech` | "Introducing Claude Code Audio Hooks. Never miss a beat." |
-| `vo-cta.mp3` | Voiceover | `/text-to-speech` | "Never miss a notification. Never lose your flow." |
+| `vo-reveal.mp3` | Voiceover | `/text-to-speech` | "Introducing Claude Code Audio Hooks. 22 hooks. Zero latency. Total awareness." |
+| `vo-features.mp3` | Voiceover | `/text-to-speech` | "Focus Flow keeps you centered. Webhooks keep you connected." |
+| `vo-cta.mp3` | Voiceover | `/text-to-speech` | "Never miss a notification. Never lose your flow. Try it in 30 seconds." |
 | `sfx-scan.mp3` | SFX | `/sound-generation` | Futuristic digital scan line sweep |
 | `sfx-whoosh.mp3` | SFX | `/sound-generation` | Cinematic whoosh transition |
 | `sfx-reveal.mp3` | SFX | `/sound-generation` | Dramatic reveal impact |
+| `sfx-breathe.mp3` | SFX | `/sound-generation` | Calming ambient breathing tone |
 | `sfx-notification.mp3` | SFX | `/sound-generation` | Digital notification chime |
 | `sfx-success.mp3` | SFX | `/sound-generation` | Achievement completion chime |
 | `bgm.mp3` | Music | `/music` | Background music (requires paid plan) |
@@ -230,7 +256,7 @@ Futuristic, minimal, polished synth soundscape.
 Starts with soft digital pulse, builds tension with atmospheric pads,
 then opens into a confident mid-tempo electronic groove with clean arpeggiated synths.
 Tech product promotional feel. Subtle bass, no vocals, no guitar.
-D minor, 100 BPM, 57 seconds.
+D minor, 100 BPM, 72 seconds.
 ```
 
 Download the result and save it as `public/bgm.mp3`.
@@ -243,7 +269,7 @@ This is the end-to-end workflow used to create this video:
 flowchart TD
     A[Plan video structure<br/>with Claude Code] --> B[Create Remotion project<br/>+ install dependencies]
     B --> C[Build reusable components<br/>TypewriterText, Terminal, etc.]
-    C --> D[Build section components<br/>7 sections + 4 sub-scenes]
+    C --> D[Build section components<br/>9 sections + 6 sub-scenes]
     D --> E[Orchestrate with<br/>TransitionSeries + transitions]
     E --> F{Audio generation}
 
