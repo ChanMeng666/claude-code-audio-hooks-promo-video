@@ -4,7 +4,11 @@ A professional promotional video for [claude-code-audio-hooks](https://github.co
 
 ## Video Output
 
+### version 1.0
 https://github.com/user-attachments/assets/f3c7ad69-f336-400a-bf57-c14943b35a0a
+
+### version 2.0
+https://github.com/user-attachments/assets/3504d214-efac-4e01-84c0-426430b842d6
 
 ## Overview
 
