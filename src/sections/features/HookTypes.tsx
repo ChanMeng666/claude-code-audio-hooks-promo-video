@@ -1,33 +1,53 @@
 import React from "react";
 import { useCurrentFrame, spring, useVideoConfig, interpolate } from "remotion";
 import {
-  FaCheckCircle,
-  FaTimesCircle,
-  FaKey,
   FaBell,
+  FaCheckCircle,
+  FaUserFriends,
   FaShieldAlt,
-  FaChartBar,
-  FaBolt,
-  FaFlagCheckered,
-  FaCog,
+  FaPlus,
 } from "react-icons/fa";
 import { COLORS, fontFamily } from "../../constants";
 
-const hookTypes: { name: string; icon: React.ReactNode }[] = [
-  { name: "Task Complete", icon: <FaCheckCircle /> },
-  { name: "Task Failure", icon: <FaTimesCircle /> },
-  { name: "Authorization", icon: <FaKey /> },
+const essentialHooks: { name: string; icon: React.ReactNode }[] = [
   { name: "Notification", icon: <FaBell /> },
+  { name: "Stop", icon: <FaCheckCircle /> },
+  { name: "SubagentStop", icon: <FaUserFriends /> },
   { name: "Permission", icon: <FaShieldAlt /> },
-  { name: "Progress", icon: <FaChartBar /> },
-  { name: "Tool Start", icon: <FaBolt /> },
-  { name: "Tool End", icon: <FaFlagCheckered /> },
-  { name: "Custom", icon: <FaCog /> },
+];
+
+const optionalHookNames = [
+  "PreToolUse", "PostToolUse", "PostToolUseFailure",
+  "UserPromptSubmit", "PreCompact", "PostCompact",
+  "SessionStart", "SessionEnd", "SubagentStart",
+  "TeammateIdle", "TaskCompleted", "StopFailure",
+  "ConfigChange", "InstructionsLoaded",
+  "WorktreeCreate", "WorktreeRemove",
+  "Elicitation", "ElicitationResult",
 ];
 
 export const HookTypes: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+
+  // Essential label
+  const labelOpacity = interpolate(frame, [5, 15], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
+  // Optional hooks reveal
+  const optionalOpacity = interpolate(frame, [45, 55], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
+  // Plus icon scale
+  const plusScale = spring({
+    frame: frame - 40,
+    fps,
+    config: { damping: 8, mass: 0.5 },
+  });
 
   return (
     <div
@@ -58,52 +78,53 @@ export const HookTypes: React.FC = () => {
         Hook Types
       </div>
 
-      {/* 3x3 Grid */}
+      {/* Essential hooks row */}
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: 20,
-          maxWidth: 900,
+          opacity: labelOpacity,
+          fontFamily,
+          fontSize: 16,
+          color: COLORS.green,
+          marginBottom: 16,
+          letterSpacing: 2,
+          textTransform: "uppercase",
         }}
       >
-        {hookTypes.map((hook, i) => {
-          const row = Math.floor(i / 3);
-          const col = i % 3;
-          const delay = (row + col) * 4 + 10;
+        4 Essential — Enabled by Default
+      </div>
 
+      <div style={{ display: "flex", gap: 20, marginBottom: 30 }}>
+        {essentialHooks.map((hook, i) => {
           const scale = spring({
-            frame: frame - delay,
+            frame: frame - 10 - i * 5,
             fps,
             config: { damping: 10, mass: 0.5 },
           });
-
-          const glowPulse = Math.sin((frame - delay) * 0.08) * 0.5 + 0.5;
 
           return (
             <div
               key={hook.name}
               style={{
-                width: 260,
-                height: 90,
+                width: 220,
+                height: 80,
                 borderRadius: 12,
-                border: `1.5px solid ${COLORS.green}`,
-                backgroundColor: `${COLORS.green}08`,
+                border: `2px solid ${COLORS.green}`,
+                backgroundColor: `${COLORS.green}15`,
                 display: "flex",
                 alignItems: "center",
-                gap: 16,
-                padding: "0 20px",
+                gap: 14,
+                padding: "0 18px",
                 transform: `scale(${scale})`,
-                boxShadow: `0 0 ${12 * glowPulse}px ${COLORS.green}33, inset 0 0 ${8 * glowPulse}px ${COLORS.green}11`,
+                boxShadow: COLORS.greenGlowSm,
               }}
             >
-              <span style={{ fontSize: 24, color: COLORS.green, display: "flex" }}>
+              <span style={{ fontSize: 22, color: COLORS.green, display: "flex" }}>
                 {hook.icon}
               </span>
               <span
                 style={{
                   fontFamily,
-                  fontSize: 18,
+                  fontSize: 17,
                   fontWeight: 600,
                   color: COLORS.white,
                 }}
@@ -115,6 +136,61 @@ export const HookTypes: React.FC = () => {
         })}
       </div>
 
+      {/* Plus icon + "18 Optional" */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 12,
+          transform: `scale(${plusScale})`,
+          marginBottom: 16,
+        }}
+      >
+        <span style={{ fontSize: 24, color: COLORS.green, display: "flex" }}>
+          <FaPlus />
+        </span>
+        <span
+          style={{
+            fontFamily,
+            fontSize: 20,
+            fontWeight: 600,
+            color: COLORS.white,
+          }}
+        >
+          18 Optional Hooks
+        </span>
+      </div>
+
+      {/* Optional hooks compact grid */}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 8,
+          maxWidth: 900,
+          justifyContent: "center",
+          opacity: optionalOpacity,
+        }}
+      >
+        {optionalHookNames.map((name) => (
+          <div
+            key={name}
+            style={{
+              padding: "6px 14px",
+              borderRadius: 6,
+              border: `1px solid ${COLORS.green}44`,
+              backgroundColor: `${COLORS.green}08`,
+              fontFamily,
+              fontSize: 13,
+              color: `${COLORS.green}cc`,
+              fontWeight: 500,
+            }}
+          >
+            {name}
+          </div>
+        ))}
+      </div>
+
       {/* Bottom text */}
       <div
         style={{
@@ -124,13 +200,13 @@ export const HookTypes: React.FC = () => {
           fontSize: 32,
           fontWeight: 700,
           color: COLORS.white,
-          opacity: interpolate(frame, [45, 55], [0, 1], {
+          opacity: interpolate(frame, [55, 65], [0, 1], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           }),
         }}
       >
-        <span style={{ color: COLORS.green }}>9</span> Hook Types. Every Event Covered.
+        <span style={{ color: COLORS.green }}>22</span> Hook Types. Complete Lifecycle Coverage.
       </div>
     </div>
   );

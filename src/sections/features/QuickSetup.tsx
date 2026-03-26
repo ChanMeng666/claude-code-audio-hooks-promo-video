@@ -9,16 +9,22 @@ export const QuickSetup: React.FC = () => {
   const { fps } = useVideoConfig();
 
   // Progress bar
-  const progressWidth = interpolate(frame, [20, 65], [0, 100], {
+  const progressWidth = interpolate(frame, [15, 45], [0, 100], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
-  // Stopwatch
+  // Stopwatch primary (30s)
   const stopwatchScale = spring({
-    frame: frame - 50,
+    frame: frame - 40,
     fps,
     config: { damping: 12 },
+  });
+
+  // Secondary stopwatch (2min)
+  const stopwatch2Opacity = interpolate(frame, [60, 70], [0, 0.5], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
   });
 
   // Done text
@@ -57,23 +63,38 @@ export const QuickSetup: React.FC = () => {
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 60 }}>
-        <Terminal title="bash — install" width={750} height={240} enterFrame={0}>
+        <Terminal title="bash — quick-setup" width={750} height={240} enterFrame={0}>
+          {/* Quick Setup one-liner */}
           <div>
+            <span style={{ color: COLORS.green, fontSize: 14, fontWeight: 600 }}>
+              # 30-Second Quick Setup
+            </span>
+          </div>
+          <div style={{ marginTop: 6 }}>
             <span style={{ color: "#888" }}>$ </span>
             <TypewriterText
-              text="git clone ...claude-code-audio-hooks.git"
+              text="curl -sL .../quick-setup.sh | bash"
               startFrame={5}
-              speed={1.2}
+              speed={1.5}
               fontSize={18}
               showCursor={false}
             />
           </div>
+
+          {/* Full Install alternative */}
           {frame > 30 && (
-            <div style={{ marginTop: 10 }}>
+            <div style={{ marginTop: 16 }}>
+              <span style={{ color: "#666", fontSize: 14 }}>
+                # Or Full Install (22 hooks + audio + TTS)
+              </span>
+            </div>
+          )}
+          {frame > 35 && (
+            <div style={{ marginTop: 4 }}>
               <span style={{ color: "#888" }}>$ </span>
               <TypewriterText
                 text="bash scripts/install-complete.sh"
-                startFrame={30}
+                startFrame={35}
                 speed={1.5}
                 fontSize={18}
                 showCursor={false}
@@ -82,10 +103,10 @@ export const QuickSetup: React.FC = () => {
           )}
 
           {/* Progress bar */}
-          {frame > 20 && (
+          {frame > 15 && (
             <div
               style={{
-                marginTop: 24,
+                marginTop: 20,
                 width: "100%",
                 height: 6,
                 backgroundColor: COLORS.lightGray,
@@ -105,18 +126,19 @@ export const QuickSetup: React.FC = () => {
           )}
         </Terminal>
 
-        {/* Stopwatch */}
+        {/* Stopwatch area */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: 12,
-            transform: `scale(${stopwatchScale})`,
+            gap: 16,
           }}
         >
+          {/* Primary: 30s */}
           <div
             style={{
+              transform: `scale(${stopwatchScale})`,
               width: 120,
               height: 120,
               borderRadius: "50%",
@@ -125,13 +147,25 @@ export const QuickSetup: React.FC = () => {
               alignItems: "center",
               justifyContent: "center",
               fontFamily,
-              fontSize: 36,
+              fontSize: 32,
               fontWeight: 800,
               color: COLORS.green,
               textShadow: COLORS.greenGlow,
             }}
           >
-            2 min
+            30 sec
+          </div>
+
+          {/* Secondary: 2min (smaller, dimmer) */}
+          <div
+            style={{
+              opacity: stopwatch2Opacity,
+              fontFamily,
+              fontSize: 16,
+              color: COLORS.white,
+            }}
+          >
+            Full Install: 2 min
           </div>
         </div>
       </div>
@@ -148,7 +182,7 @@ export const QuickSetup: React.FC = () => {
           opacity: doneOpacity,
         }}
       >
-        Two Minutes.{" "}
+        30 Seconds.{" "}
         <span style={{ color: COLORS.green }}>Ready to Go.</span>
       </div>
     </div>

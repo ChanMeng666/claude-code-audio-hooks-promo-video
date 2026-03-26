@@ -79,7 +79,7 @@ export const CrossPlatform: React.FC = () => {
         <div
           style={{
             display: "flex",
-            gap: 120,
+            gap: 80,
             marginTop: 80,
           }}
         >
@@ -90,9 +90,9 @@ export const CrossPlatform: React.FC = () => {
             label="Platforms"
           />
           <CounterNumber
-            target={9}
+            target={22}
             startFrame={70}
-            duration={20}
+            duration={25}
             label="Hook Types"
           />
           <CounterNumber
@@ -100,6 +100,12 @@ export const CrossPlatform: React.FC = () => {
             startFrame={80}
             duration={15}
             label="Audio Sets"
+          />
+          <CounterNumber
+            target={5}
+            startFrame={85}
+            duration={20}
+            label="Channels"
           />
         </div>
       )}

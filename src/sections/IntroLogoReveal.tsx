@@ -177,7 +177,7 @@ export const IntroLogoReveal: React.FC = () => {
           backgroundColor: `${COLORS.green}11`,
         }}
       >
-        v4.0.3
+        v4.7.0
       </div>
     </div>
   );

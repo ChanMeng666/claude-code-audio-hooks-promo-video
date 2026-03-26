@@ -91,14 +91,14 @@ async function pickVoice() {
 // ─── Step 2: Generate TTS Voiceover ─────────────────────
 
 async function generateVoiceover(voiceId) {
-  console.log("\n[2/4] Generating voiceover...");
+  console.log("\n[2/4] Generating voiceover (3 files)...");
   const results = {};
 
   results.reveal = await saveAudio(
     "VO",
     `/text-to-speech/${voiceId}`,
     {
-      text: "Introducing Claude Code Audio Hooks. Never miss a beat.",
+      text: "Introducing Claude Code Audio Hooks. 22 hooks. Zero latency. Total awareness.",
       model_id: "eleven_multilingual_v2",
       voice_settings: { stability: 0.65, similarity_boost: 0.8 },
     },
@@ -109,11 +109,22 @@ async function generateVoiceover(voiceId) {
     "VO",
     `/text-to-speech/${voiceId}`,
     {
-      text: "Never miss a notification. Never lose your flow.",
+      text: "Never miss a notification. Never lose your flow. Try it in 30 seconds.",
       model_id: "eleven_multilingual_v2",
       voice_settings: { stability: 0.65, similarity_boost: 0.8 },
     },
     "vo-cta.mp3"
+  );
+
+  results.features = await saveAudio(
+    "VO",
+    `/text-to-speech/${voiceId}`,
+    {
+      text: "Focus Flow keeps you centered. Webhooks keep you connected.",
+      model_id: "eleven_multilingual_v2",
+      voice_settings: { stability: 0.65, similarity_boost: 0.8 },
+    },
+    "vo-features.mp3"
   );
 
   return results;
@@ -180,6 +191,17 @@ async function generateSFX() {
     "sfx-success.mp3"
   );
 
+  results.breathe = await saveAudio(
+    "SFX",
+    "/sound-generation",
+    {
+      text: "soft calming ambient breathing tone, gentle meditation bowl resonance, peaceful digital atmosphere",
+      duration: 4.0,
+      prompt_influence: 0.3,
+    },
+    "sfx-breathe.mp3"
+  );
+
   return results;
 }
 
@@ -230,12 +252,14 @@ async function main() {
   console.log("────────────────────────────────────────────────");
   const all = {
     "vo-reveal.mp3": voResults.reveal,
+    "vo-features.mp3": voResults.features,
     "vo-cta.mp3": voResults.cta,
     "sfx-scan.mp3": sfxResults.scan,
     "sfx-whoosh.mp3": sfxResults.whoosh,
     "sfx-reveal.mp3": sfxResults.reveal,
     "sfx-notification.mp3": sfxResults.notification,
     "sfx-success.mp3": sfxResults.success,
+    "sfx-breathe.mp3": sfxResults.breathe,
     "bgm.mp3": bgmResult,
   };
 

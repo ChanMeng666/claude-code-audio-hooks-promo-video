@@ -23,10 +23,14 @@ export const DURATIONS = {
   transition3: 20,
   features: 480,
   transition4: 20,
-  demo: 300,
+  advancedFeatures: 300,
   transition5: 20,
-  crossPlatform: 210,
+  demo: 300,
   transition6: 20,
+  ecosystem: 210,
+  transition7: 20,
+  crossPlatform: 210,
+  transition8: 20,
   callToAction: 270,
 } as const;
 
@@ -34,4 +38,7 @@ export const FPS = 30;
 export const WIDTH = 1920;
 export const HEIGHT = 1080;
 
-export const TOTAL_FRAMES = 1700;
+// Sum of sections: 150+210+200+480+300+300+210+210+270 = 2330
+// Sum of transitions: 8 * 20 = 160
+// Total: 2330 - 160 = 2170
+export const TOTAL_FRAMES = 2170;

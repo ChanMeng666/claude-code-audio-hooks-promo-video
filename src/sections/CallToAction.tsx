@@ -111,13 +111,13 @@ export const CallToAction: React.FC = () => {
           <TypewriterBlock
             lines={[
               {
-                text: "$ git clone ...claude-code-audio-hooks.git",
+                text: "# 30-Second Quick Setup",
                 delay: 0,
-                color: COLORS.green,
+                color: "#888",
               },
               {
-                text: "$ bash scripts/install-complete.sh",
-                delay: 25,
+                text: "$ curl -sL .../quick-setup.sh | bash",
+                delay: 20,
                 color: COLORS.green,
               },
             ]}
@@ -197,7 +197,7 @@ export const CallToAction: React.FC = () => {
           }}
         >
           Never miss a notification.{" "}
-          <span style={{ color: COLORS.green }}>Never lose your flow.</span>
+          <span style={{ color: COLORS.green }}>Try it in 30 seconds.</span>
         </div>
       )}
 

@@ -35,7 +35,7 @@ export const SolutionReveal: React.FC = () => {
   });
 
   // Badges (frame 60-90)
-  const badges = ["Audio Cues", "Desktop Notifications", "Permission Alerts"];
+  const badges = ["22 Hook Types", "Focus Flow", "Webhooks"];
   const badgeScales = badges.map((_, i) =>
     spring({
       frame: frame - 60 - i * 8,
@@ -151,7 +151,7 @@ export const SolutionReveal: React.FC = () => {
             fontWeight: 400,
           }}
         >
-          Audio Notifications for Claude Code
+          Complete Notification System for Claude Code
         </div>
       </div>
     </div>
