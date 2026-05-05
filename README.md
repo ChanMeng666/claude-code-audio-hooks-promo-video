@@ -4,7 +4,7 @@ A professional promotional video for [echook](https://github.com/ChanMeng666/ech
 
 ## Video Output
 
-https://github.com/user-attachments/assets/3504d214-efac-4e01-84c0-426430b842d6
+https://github.com/user-attachments/assets/5911919f-1f09-4465-9281-a35b735ac660
 
 <details>
 <summary>Previous versions</summary>
@@ -12,6 +12,10 @@ https://github.com/user-attachments/assets/3504d214-efac-4e01-84c0-426430b842d6
 ### v1.0
 
 https://github.com/user-attachments/assets/f3c7ad69-f336-400a-bf57-c14943b35a0a
+
+### v2.0
+
+https://github.com/user-attachments/assets/3504d214-efac-4e01-84c0-426430b842d6
 
 </details>
 
