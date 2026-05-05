@@ -114,7 +114,7 @@ export const IntroLogoReveal: React.FC = () => {
         }}
       >
         <Img
-          src={staticFile("claude-code-audio-hooks-logo.svg")}
+          src={staticFile("echook-logo.svg")}
           style={{
             width: 200,
             height: 200,
@@ -155,10 +155,10 @@ export const IntroLogoReveal: React.FC = () => {
       {/* Typewriter title */}
       <div style={{ marginTop: 40, display: "flex", alignItems: "center", gap: 16 }}>
         <TypewriterText
-          text="claude-code-audio-hooks"
+          text="echook"
           startFrame={75}
-          speed={1.5}
-          fontSize={42}
+          speed={3}
+          fontSize={72}
           fontWeight={700}
         />
       </div>
@@ -177,7 +177,7 @@ export const IntroLogoReveal: React.FC = () => {
           backgroundColor: `${COLORS.green}11`,
         }}
       >
-        v4.7.0
+        v5.2.1
       </div>
     </div>
   );

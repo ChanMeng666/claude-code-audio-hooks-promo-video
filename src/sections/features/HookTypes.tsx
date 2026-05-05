@@ -24,6 +24,7 @@ const optionalHookNames = [
   "ConfigChange", "InstructionsLoaded",
   "WorktreeCreate", "WorktreeRemove",
   "Elicitation", "ElicitationResult",
+  "PermissionDenied", "CwdChanged", "FileChanged", "TaskCreated",
 ];
 
 export const HookTypes: React.FC = () => {
@@ -157,7 +158,7 @@ export const HookTypes: React.FC = () => {
             color: COLORS.white,
           }}
         >
-          18 Optional Hooks
+          22 Optional Hooks
         </span>
       </div>
 
@@ -206,7 +207,7 @@ export const HookTypes: React.FC = () => {
           }),
         }}
       >
-        <span style={{ color: COLORS.green }}>22</span> Hook Types. Complete Lifecycle Coverage.
+        <span style={{ color: COLORS.green }}>26</span> Hook Types. Complete Lifecycle Coverage.
       </div>
     </div>
   );

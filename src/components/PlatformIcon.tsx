@@ -1,15 +1,29 @@
 import React from "react";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { FaWindows, FaApple, FaLinux, FaTerminal, FaGitAlt, FaCode } from "react-icons/fa";
+import {
+  FaWindows,
+  FaApple,
+  FaLinux,
+  FaTerminal,
+  FaGitAlt,
+  FaCode,
+  FaRobot,
+  FaMousePointer,
+} from "react-icons/fa";
 import { COLORS, fontFamily } from "../constants";
 
 const platformData: Record<string, { label: string; icon: React.ReactNode }> = {
+  // Operating systems (legacy — still available if needed)
   windows: { label: "Windows", icon: <FaWindows /> },
   macos: { label: "macOS", icon: <FaApple /> },
   linux: { label: "Linux", icon: <FaLinux /> },
   wsl: { label: "WSL", icon: <FaTerminal /> },
   gitbash: { label: "Git Bash", icon: <FaGitAlt /> },
   cygwin: { label: "Cygwin", icon: <FaCode /> },
+  // AI editors (v5.2 cross-platform story)
+  claudeCode: { label: "Claude Code", icon: <FaRobot /> },
+  cursor: { label: "Cursor", icon: <FaMousePointer /> },
+  codex: { label: "Codex CLI", icon: <FaTerminal /> },
 };
 
 export const PlatformIcon: React.FC<{

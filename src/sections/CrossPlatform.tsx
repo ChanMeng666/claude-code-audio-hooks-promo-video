@@ -4,7 +4,7 @@ import { COLORS, fontFamily } from "../constants";
 import { PlatformIcon } from "../components/PlatformIcon";
 import { CounterNumber } from "../components/CounterNumber";
 
-const platforms = ["windows", "macos", "linux", "wsl", "gitbash", "cygwin"];
+const platforms = ["claudeCode", "cursor", "codex"];
 
 export const CrossPlatform: React.FC = () => {
   const frame = useCurrentFrame();
@@ -40,11 +40,11 @@ export const CrossPlatform: React.FC = () => {
         overflow: "hidden",
       }}
     >
-      {/* Platform icons */}
+      {/* Editor icons */}
       <div
         style={{
           display: "flex",
-          gap: 50,
+          gap: 100,
           transform: `translateY(${rowY}px)`,
         }}
       >
@@ -52,8 +52,8 @@ export const CrossPlatform: React.FC = () => {
           <PlatformIcon
             key={platform}
             platform={platform}
-            enterFrame={i * 6}
-            size={90}
+            enterFrame={i * 8}
+            size={160}
           />
         ))}
       </div>
@@ -84,13 +84,13 @@ export const CrossPlatform: React.FC = () => {
           }}
         >
           <CounterNumber
-            target={6}
+            target={3}
             startFrame={60}
             duration={20}
-            label="Platforms"
+            label="AI Editors"
           />
           <CounterNumber
-            target={22}
+            target={26}
             startFrame={70}
             duration={25}
             label="Hook Types"

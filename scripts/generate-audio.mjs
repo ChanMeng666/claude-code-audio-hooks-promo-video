@@ -75,11 +75,15 @@ async function pickVoice() {
     );
   });
 
-  // Prefer a deep, professional male voice for tech promo
+  // Prefer a deep, professional male voice for tech promo. ElevenLabs voice
+  // names include a tagline (e.g. "Daniel - Steady Broadcaster"), so match
+  // by the leading first-name token rather than exact equality.
   const preferred = ["Daniel", "Adam", "Charlie", "Clyde", "James"];
   let picked = null;
   for (const name of preferred) {
-    picked = voices.find((v) => v.name === name);
+    picked = voices.find((v) =>
+      v.name === name || v.name.startsWith(`${name} `) || v.name.startsWith(`${name}-`)
+    );
     if (picked) break;
   }
   if (!picked) picked = voices[0];
@@ -98,7 +102,7 @@ async function generateVoiceover(voiceId) {
     "VO",
     `/text-to-speech/${voiceId}`,
     {
-      text: "Introducing Claude Code Audio Hooks. 22 hooks. Zero latency. Total awareness.",
+      text: "Introducing eck hook. Twenty-six hooks. Three AI editors. Zero latency. Total awareness.",
       model_id: "eleven_multilingual_v2",
       voice_settings: { stability: 0.65, similarity_boost: 0.8 },
     },

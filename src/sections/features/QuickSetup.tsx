@@ -85,7 +85,7 @@ export const QuickSetup: React.FC = () => {
           {frame > 30 && (
             <div style={{ marginTop: 16 }}>
               <span style={{ color: "#666", fontSize: 14 }}>
-                # Or Full Install (22 hooks + audio + TTS)
+                # Or Full Install (26 hooks + audio + TTS)
               </span>
             </div>
           )}

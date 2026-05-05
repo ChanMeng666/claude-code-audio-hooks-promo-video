@@ -35,7 +35,7 @@ export const SolutionReveal: React.FC = () => {
   });
 
   // Badges (frame 60-90)
-  const badges = ["22 Hook Types", "Focus Flow", "Webhooks"];
+  const badges = ["26 Hook Types", "Focus Flow", "Webhooks"];
   const badgeScales = badges.map((_, i) =>
     spring({
       frame: frame - 60 - i * 8,
@@ -95,7 +95,7 @@ export const SolutionReveal: React.FC = () => {
         {/* Logo */}
         <div style={{ transform: `scale(${logoScale})` }}>
           <Img
-            src={staticFile("claude-code-audio-hooks-logo.svg")}
+            src={staticFile("echook-logo.svg")}
             style={{
               width: 160,
               height: 160,
@@ -107,7 +107,7 @@ export const SolutionReveal: React.FC = () => {
         {/* Typewriter tagline */}
         <div style={{ marginTop: 8 }}>
           <TypewriterText
-            text="Never miss a beat from Claude Code."
+            text="Never miss a beat from your AI agent."
             startFrame={35}
             speed={1.5}
             fontSize={38}
@@ -151,7 +151,7 @@ export const SolutionReveal: React.FC = () => {
             fontWeight: 400,
           }}
         >
-          Complete Notification System for Claude Code
+          For Claude Code, Cursor &amp; Codex CLI
         </div>
       </div>
     </div>

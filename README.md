@@ -1,6 +1,6 @@
-# Claude Code Audio Hooks - Promotional Video
+# echook - Promotional Video
 
-A professional promotional video for [claude-code-audio-hooks](https://github.com/ChanMeng666/claude-code-audio-hooks), built entirely with code using **Remotion**, **Claude Code**, **ElevenLabs**, and **Suno**.
+A professional promotional video for [echook](https://github.com/ChanMeng666/echook) (formerly `claude-code-audio-hooks`), built entirely with code using **Remotion**, **Claude Code**, **ElevenLabs**, and **Suno**.
 
 ## Video Output
 
@@ -25,7 +25,7 @@ https://github.com/user-attachments/assets/f3c7ad69-f336-400a-bf57-c14943b35a0a
 | Format | MP4 (H.264) |
 | Font | Inter (Google Fonts) |
 | Brand Colors | `#16F800` (green), `#000000` (black) |
-| Version | v4.7.0 |
+| Version | v5.2.1 |
 
 ## Video Structure
 
@@ -47,14 +47,14 @@ graph LR
 
 | # | Section | Duration | Description |
 |---|---------|----------|-------------|
-| 1 | Intro / Logo Reveal | 5.0s | Scan line sweep, logo materialization, particle burst (v4.7.0) |
+| 1 | Intro / Logo Reveal | 5.0s | Scan line sweep, logo materialization, particle burst (v5.2.1) |
 | 2 | Problem Statement | 7.0s | Terminal shows missed authorization, red vignette |
-| 3 | Solution Reveal | 6.7s | Dramatic circle reveal, badges: 22 Hook Types, Focus Flow, Webhooks |
-| 4 | Feature Highlights | 16.0s | 4 sub-scenes (Quick Setup, 22 Hook Types, Audio Sets, Open Source) |
+| 3 | Solution Reveal | 6.7s | Dramatic circle reveal, badges: 26 Hook Types, Focus Flow, Webhooks |
+| 4 | Feature Highlights | 16.0s | 4 sub-scenes (Quick Setup, 26 Hook Types, Audio Sets, Open Source) |
 | 5 | Advanced Features | 10.0s | 2 sub-scenes (Focus Flow with real screenshot, Webhooks: Slack/Discord/Teams/ntfy) |
 | 6 | Demo Showcase | 10.0s | Real screen recording of the product in action |
 | 7 | Ecosystem | 7.0s | Smart Matchers, Async Execution, Snooze feature cards |
-| 8 | Cross-Platform | 7.0s | 6 platform icons, 4 animated counters (22 hooks, 5 channels) |
+| 8 | Cross-Platform | 7.0s | 3 AI-editor icons (Claude Code · Cursor · Codex CLI), 4 animated counters (26 hooks, 5 channels) |
 | 9 | Call to Action | 9.0s | Quick Setup curl command, GitHub link, tagline |
 
 ### Audio Layer
@@ -233,7 +233,7 @@ The script generates:
 
 | File | Type | API Endpoint | Description |
 |------|------|-------------|-------------|
-| `vo-reveal.mp3` | Voiceover | `/text-to-speech` | "Introducing Claude Code Audio Hooks. 22 hooks. Zero latency. Total awareness." |
+| `vo-reveal.mp3` | Voiceover | `/text-to-speech` | "Introducing echook. Twenty-six hooks. Three AI editors. Zero latency. Total awareness." |
 | `vo-features.mp3` | Voiceover | `/text-to-speech` | "Focus Flow keeps you centered. Webhooks keep you connected." |
 | `vo-cta.mp3` | Voiceover | `/text-to-speech` | "Never miss a notification. Never lose your flow. Try it in 30 seconds." |
 | `sfx-scan.mp3` | SFX | `/sound-generation` | Futuristic digital scan line sweep |

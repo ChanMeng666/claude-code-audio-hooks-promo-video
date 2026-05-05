@@ -132,7 +132,7 @@ export const CallToAction: React.FC = () => {
       {frame >= 75 && (
         <div style={{ opacity: urlOpacity, marginBottom: 30 }}>
           <GlowText
-            text="github.com/ChanMeng666/claude-code-audio-hooks"
+            text="github.com/ChanMeng666/echook"
             fontSize={28}
             enterFrame={75}
           />
@@ -151,7 +151,7 @@ export const CallToAction: React.FC = () => {
           }}
         >
           <Img
-            src={staticFile("claude-code-audio-hooks-logo.svg")}
+            src={staticFile("echook-logo.svg")}
             style={{
               width: 80,
               height: 80,

@@ -1,7 +1,7 @@
 {
-  "name": "claude-code-audio-hooks-promo-video",
+  "name": "echook-promo-video",
   "version": "1.0.0",
-  "description": "Promotional video for Claude Code Audio Hooks, built with Remotion",
+  "description": "Promotional video for echook (formerly Claude Code Audio Hooks), built with Remotion",
   "repository": {},
   "license": "UNLICENSED",
   "private": true,
