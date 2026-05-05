@@ -19,7 +19,7 @@ import {
 } from "react-icons/fa";
 import { COLORS, fontFamily } from "../constants";
 
-const SUB_SCENE_DURATION = 150;
+const SUB_SCENE_DURATION = 180;
 
 /* ── Sub-scene A: Focus Flow ── */
 const FocusFlow: React.FC = () => {

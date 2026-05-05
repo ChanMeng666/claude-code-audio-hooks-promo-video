@@ -5,7 +5,7 @@ import { HookTypes } from "./features/HookTypes";
 import { AudioSets } from "./features/AudioSets";
 import { OpenSource } from "./features/OpenSource";
 
-const SUB_SCENE_DURATION = 120;
+const SUB_SCENE_DURATION = 150;
 
 export const FeatureHighlights: React.FC = () => {
   return (

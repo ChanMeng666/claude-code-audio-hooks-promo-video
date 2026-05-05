@@ -21,7 +21,7 @@ https://github.com/user-attachments/assets/f3c7ad69-f336-400a-bf57-c14943b35a0a
 |----------|-------|
 | Resolution | 1920 x 1080 (Full HD) |
 | Frame Rate | 30 fps |
-| Duration | ~72 seconds (2170 frames) |
+| Duration | ~88.7 seconds (2660 frames) |
 | Format | MP4 (H.264) |
 | Font | Inter (Google Fonts) |
 | Brand Colors | `#16F800` (green), `#000000` (black) |
@@ -34,13 +34,13 @@ The video is composed of 9 sections connected with smooth transitions:
 ```mermaid
 graph LR
     A[Intro<br/>5.0s] -->|wipe| B[Problem<br/>7.0s]
-    B -->|fade| C[Solution<br/>6.7s]
-    C -->|slide| D[Features<br/>16.0s]
-    D -->|fade| E[Advanced<br/>10.0s]
-    E -->|slide| F[Demo<br/>10.0s]
-    F -->|wipe| G[Ecosystem<br/>7.0s]
-    G -->|fade| H[Cross-Platform<br/>7.0s]
-    H -->|fade| I[CTA<br/>9.0s]
+    B -->|fade| C[Solution<br/>11.0s]
+    C -->|slide| D[Features<br/>20.0s]
+    D -->|fade| E[Advanced<br/>12.0s]
+    E -->|slide| F[Demo<br/>12.0s]
+    F -->|wipe| G[Ecosystem<br/>8.0s]
+    G -->|fade| H[Cross-Platform<br/>9.0s]
+    H -->|fade| I[CTA<br/>10.0s]
 ```
 
 ### Section Timeline
@@ -49,13 +49,13 @@ graph LR
 |---|---------|----------|-------------|
 | 1 | Intro / Logo Reveal | 5.0s | Scan line sweep, logo materialization, particle burst (v5.2.1) |
 | 2 | Problem Statement | 7.0s | Terminal shows missed authorization, red vignette |
-| 3 | Solution Reveal | 6.7s | Dramatic circle reveal, badges: 26 Hook Types, Focus Flow, Webhooks |
-| 4 | Feature Highlights | 16.0s | 4 sub-scenes (Quick Setup, 26 Hook Types, Audio Sets, Open Source) |
-| 5 | Advanced Features | 10.0s | 2 sub-scenes (Focus Flow with real screenshot, Webhooks: Slack/Discord/Teams/ntfy) |
-| 6 | Demo Showcase | 10.0s | Real screen recording of the product in action |
-| 7 | Ecosystem | 7.0s | Smart Matchers, Async Execution, Snooze feature cards |
-| 8 | Cross-Platform | 7.0s | 3 AI-editor icons (Claude Code · Cursor · Codex CLI), 4 animated counters (26 hooks, 5 channels) |
-| 9 | Call to Action | 9.0s | Quick Setup curl command, GitHub link, tagline |
+| 3 | Solution Reveal | 11.0s | Dramatic circle reveal, badges: 26 Hook Types, Focus Flow, Webhooks |
+| 4 | Feature Highlights | 20.0s | 4 sub-scenes (Quick Setup, 26 Hook Types, Audio Sets, Open Source) |
+| 5 | Advanced Features | 12.0s | 2 sub-scenes (Focus Flow with real screenshot, Webhooks: Slack/Discord/Teams/ntfy) |
+| 6 | Demo Showcase | 12.0s | Real screen recording of the product in action |
+| 7 | Ecosystem | 8.0s | Smart Matchers, Async Execution, Snooze feature cards |
+| 8 | Cross-Platform | 9.0s | 3 AI-editor icons (Claude Code · Cursor · Codex CLI), 4 animated counters (26 hooks, 5 channels) |
+| 9 | Call to Action | 10.0s | Quick Setup curl command, GitHub link, tagline |
 
 ### Audio Layer
 
@@ -68,27 +68,27 @@ gantt
     axisFormat %s
 
     section BGM
-    Background Music (with ducking) :0, 2170
+    Background Music (with ducking) :0, 2660
 
     section SFX
     Scan Line     :15, 75
     Whoosh T1     :125, 155
     Whoosh T2     :315, 345
     Reveal Impact :335, 410
-    Whoosh T3     :495, 525
-    Notification  :755, 800
-    Whoosh T4     :955, 985
-    Breathe SFX   :975, 1095
-    Whoosh T5     :1235, 1265
-    Whoosh T6     :1515, 1545
-    Whoosh T7     :1705, 1735
-    Success Chime :1770, 1815
-    Whoosh T8     :1895, 1925
+    Whoosh T3     :625, 655
+    Notification  :945, 990
+    Whoosh T4     :1205, 1235
+    Breathe SFX   :1225, 1345
+    Whoosh T5     :1545, 1575
+    Whoosh T6     :1885, 1915
+    Whoosh T7     :2105, 2135
+    Success Chime :2170, 2215
+    Whoosh T8     :2355, 2385
 
     section Voiceover
-    VO Reveal     :355, 475
-    VO Features   :1010, 1110
-    VO CTA        :2020, 2170
+    VO Reveal     :355, 610
+    VO Features   :1260, 1360
+    VO CTA        :2480, 2630
 ```
 
 ## Quick Start

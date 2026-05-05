@@ -19,26 +19,26 @@ export const DURATIONS = {
   transition1: 20,
   problem: 210,
   transition2: 20,
-  solution: 200,
+  solution: 330,
   transition3: 20,
-  features: 480,
+  features: 600,
   transition4: 20,
-  advancedFeatures: 300,
+  advancedFeatures: 360,
   transition5: 20,
-  demo: 300,
+  demo: 360,
   transition6: 20,
-  ecosystem: 210,
+  ecosystem: 240,
   transition7: 20,
-  crossPlatform: 210,
+  crossPlatform: 270,
   transition8: 20,
-  callToAction: 270,
+  callToAction: 300,
 } as const;
 
 export const FPS = 30;
 export const WIDTH = 1920;
 export const HEIGHT = 1080;
 
-// Sum of sections: 150+210+200+480+300+300+210+210+270 = 2330
+// Sum of sections: 150+210+330+600+360+360+240+270+300 = 2820
 // Sum of transitions: 8 * 20 = 160
-// Total: 2330 - 160 = 2170
-export const TOTAL_FRAMES = 2170;
+// Total: 2820 - 160 = 2660 (~88.7 seconds @ 30fps)
+export const TOTAL_FRAMES = 2660;

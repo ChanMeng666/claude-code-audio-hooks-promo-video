@@ -26,19 +26,19 @@ import { CallToAction } from "./sections/CallToAction";
  *
  * Section 1 (Intro):             0 –  149
  * Section 2 (Problem):         130 –  339
- * Section 3 (Solution):        320 –  519
- * Section 4 (Features):        500 –  979
- *   4A QuickSetup:             500 –  619
- *   4B HookTypes:              620 –  739
- *   4C AudioSets:              740 –  859
- *   4D OpenSource:             860 –  979
- * Section 5 (AdvancedFeatures):960 – 1259
- *   5A FocusFlow:              960 – 1109
- *   5B Webhooks:              1110 – 1259
- * Section 6 (Demo):          1240 – 1539
- * Section 7 (Ecosystem):     1520 – 1729
- * Section 8 (CrossPlatform): 1710 – 1919
- * Section 9 (CTA):           1900 – 2169
+ * Section 3 (Solution):        320 –  649
+ * Section 4 (Features):        630 – 1229
+ *   4A QuickSetup:             630 –  779
+ *   4B HookTypes:              780 –  929
+ *   4C AudioSets:              930 – 1079
+ *   4D OpenSource:            1080 – 1229
+ * Section 5 (AdvancedFeatures):1210 – 1569
+ *   5A FocusFlow:             1210 – 1389
+ *   5B Webhooks:              1390 – 1569
+ * Section 6 (Demo):          1550 – 1909
+ * Section 7 (Ecosystem):     1890 – 2129
+ * Section 8 (CrossPlatform): 2110 – 2379
+ * Section 9 (CTA):           2360 – 2659
  */
 
 /**
@@ -59,34 +59,34 @@ const BackgroundMusic: React.FC = () => {
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
 
-  // Duck during demo video (section 6: 1240-1539)
+  // Duck during demo video (section 6: 1550-1909)
   const demoDuck = interpolate(
     frame,
-    [1225, 1240, 1539, 1555],
+    [1535, 1550, 1909, 1925],
     [1, 0.12, 0.12, 1],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
 
-  // Duck during VO reveal (solution section, global ~355)
+  // Duck during VO reveal (solution section, global 355–602, ~8.2s)
   const voRevealDuck = interpolate(
     frame,
-    [345, 355, 445, 455],
+    [345, 355, 605, 620],
     [1, 0.25, 0.25, 1],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
 
-  // Duck during VO features (advanced features section, global ~1010)
+  // Duck during VO features (advanced features section, global ~1260)
   const voFeaturesDuck = interpolate(
     frame,
-    [1000, 1010, 1090, 1100],
+    [1250, 1260, 1355, 1370],
     [1, 0.25, 0.25, 1],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
 
-  // Duck during CTA voiceover (global ~2020)
+  // Duck during CTA voiceover (global ~2480)
   const voCtaDuck = interpolate(
     frame,
-    [2010, 2020, 2135, 2145],
+    [2470, 2480, 2620, 2635],
     [1, 0.25, 0.25, 1],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
@@ -122,65 +122,65 @@ export const PromoVideo: React.FC = () => {
         <Audio src={staticFile("sfx-reveal.mp3")} volume={0.6} />
       </Sequence>
 
-      {/* VO: Solution reveal narration */}
-      <Sequence from={355} durationInFrames={120}>
+      {/* VO: Solution reveal narration (~8.2s — needs full 250 frames) */}
+      <Sequence from={355} durationInFrames={255}>
         <Audio src={staticFile("vo-reveal.mp3")} volume={0.85} />
       </Sequence>
 
-      {/* SFX: Transition 3 whoosh (Solution→Features, ~frame 500) */}
-      <Sequence from={495} durationInFrames={30}>
+      {/* SFX: Transition 3 whoosh (Solution→Features, ~frame 630) */}
+      <Sequence from={625} durationInFrames={30}>
         <Audio src={staticFile("sfx-whoosh.mp3")} volume={0.3} />
       </Sequence>
 
-      {/* SFX: Notification chime (Section 4C AudioSets, global ~755) */}
-      <Sequence from={755} durationInFrames={45}>
+      {/* SFX: Notification chime (Section 4C AudioSets, global ~945) */}
+      <Sequence from={945} durationInFrames={45}>
         <Audio src={staticFile("sfx-notification.mp3")} volume={0.45} />
       </Sequence>
 
-      {/* SFX: Transition 4 whoosh (Features→AdvancedFeatures, ~frame 960) */}
-      <Sequence from={955} durationInFrames={30}>
+      {/* SFX: Transition 4 whoosh (Features→AdvancedFeatures, ~frame 1210) */}
+      <Sequence from={1205} durationInFrames={30}>
         <Audio src={staticFile("sfx-whoosh.mp3")} volume={0.3} />
       </Sequence>
 
-      {/* SFX: Breathe ambient (Focus Flow sub-scene, global ~975) */}
-      <Sequence from={975} durationInFrames={120}>
+      {/* SFX: Breathe ambient (Focus Flow sub-scene, global ~1225) */}
+      <Sequence from={1225} durationInFrames={120}>
         <Audio src={staticFile("sfx-breathe.mp3")} volume={0.35} />
       </Sequence>
 
-      {/* VO: Features narration (AdvancedFeatures section, global ~1010) */}
-      <Sequence from={1010} durationInFrames={100}>
+      {/* VO: Features narration (AdvancedFeatures section, global ~1260) */}
+      <Sequence from={1260} durationInFrames={100}>
         <Audio src={staticFile("vo-features.mp3")} volume={0.85} />
       </Sequence>
 
-      {/* SFX: Transition 5 whoosh (AdvancedFeatures→Demo, ~frame 1240) */}
-      <Sequence from={1235} durationInFrames={30}>
+      {/* SFX: Transition 5 whoosh (AdvancedFeatures→Demo, ~frame 1550) */}
+      <Sequence from={1545} durationInFrames={30}>
         <Audio src={staticFile("sfx-whoosh.mp3")} volume={0.3} />
       </Sequence>
 
       {/* Demo video section has its own audio (Section 6) */}
 
-      {/* SFX: Transition 6 whoosh (Demo→Ecosystem, ~frame 1520) */}
-      <Sequence from={1515} durationInFrames={30}>
+      {/* SFX: Transition 6 whoosh (Demo→Ecosystem, ~frame 1890) */}
+      <Sequence from={1885} durationInFrames={30}>
         <Audio src={staticFile("sfx-whoosh.mp3")} volume={0.3} />
       </Sequence>
 
-      {/* SFX: Transition 7 whoosh (Ecosystem→CrossPlatform, ~frame 1710) */}
-      <Sequence from={1705} durationInFrames={30}>
+      {/* SFX: Transition 7 whoosh (Ecosystem→CrossPlatform, ~frame 2110) */}
+      <Sequence from={2105} durationInFrames={30}>
         <Audio src={staticFile("sfx-whoosh.mp3")} volume={0.3} />
       </Sequence>
 
-      {/* SFX: Success chime (Section 8 CrossPlatform, local frame 60 → global 1770) */}
-      <Sequence from={1770} durationInFrames={45}>
+      {/* SFX: Success chime (Section 8 CrossPlatform, local frame 60 → global 2170) */}
+      <Sequence from={2170} durationInFrames={45}>
         <Audio src={staticFile("sfx-success.mp3")} volume={0.4} />
       </Sequence>
 
-      {/* SFX: Transition 8 whoosh (CrossPlatform→CTA, ~frame 1900) */}
-      <Sequence from={1895} durationInFrames={30}>
+      {/* SFX: Transition 8 whoosh (CrossPlatform→CTA, ~frame 2360) */}
+      <Sequence from={2355} durationInFrames={30}>
         <Audio src={staticFile("sfx-whoosh.mp3")} volume={0.3} />
       </Sequence>
 
-      {/* VO: CTA narration (Section 9, local ~frame 120 → global 2020) */}
-      <Sequence from={2020} durationInFrames={150}>
+      {/* VO: CTA narration (Section 9, local ~frame 120 → global 2480) */}
+      <Sequence from={2480} durationInFrames={150}>
         <Audio src={staticFile("vo-cta.mp3")} volume={0.9} />
       </Sequence>
 
