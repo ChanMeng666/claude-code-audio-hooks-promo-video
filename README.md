@@ -102,8 +102,8 @@ gantt
 
 ```bash
 # Clone the repository
-git clone https://github.com/ChanMeng666/claude-code-audio-hooks-promo-video.git
-cd claude-code-audio-hooks-promo-video
+git clone https://github.com/ChanMeng666/echook-promo-video.git
+cd echook-promo-video
 
 # Install dependencies
 npm install
@@ -122,7 +122,7 @@ npm run render
 ## Project Structure
 
 ```
-claude-code-audio-hooks-promo-video/
+echook-promo-video/
 ├── public/                          # Static assets
 │   ├── claude-code-audio-hooks-logo.svg
 │   ├── demo-task-complete.mp4       # Screen recording
